@@ -1,0 +1,9 @@
+.show-quote {
+  color: black;
+  border-color: black;
+  border-style: solid;
+  padding: auto;
+  margin: auto;
+  width: 100%;
+  height: 30px;
+}
