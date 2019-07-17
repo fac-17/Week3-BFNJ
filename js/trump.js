@@ -8,7 +8,7 @@
 // xhr.open("GET", "xmlhttp_info.txt", true);
 // xhr.send();
 
-var showQuote = document.querySelector("#show-quote");
+var showQuote = document.querySelector(".show-quote");
 console.log(showQuote);
 // showQuote.innerHTML = "hello;";
 
