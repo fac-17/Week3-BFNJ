@@ -1,0 +1,24 @@
+{
+  "name": "week3-bfpj",
+  "version": "1.0.0",
+  "description": "Emmanuel, Jack, Colette, Georgia API week",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape *.test.js | tap-spec",
+    "test:watch": "nodemon -q -x 'npm test'",
+    "start": "browser-sync start --no-notify -sf 'index,html, style.css, app.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac-17/Week3-BFPJ.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac-17/Week3-BFPJ/issues"
+  },
+  "homepage": "https://github.com/fac-17/Week3-BFPJ#readme",
+  "dependencies": {
+    "tape": "^4.11.0"
+  }
+}
