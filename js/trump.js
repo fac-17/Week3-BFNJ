@@ -8,29 +8,28 @@
 // xhr.open("GET", "xmlhttp_info.txt", true);
 // xhr.send();
 
-var showQuote = document.querySelector(".show-quote");
+var showQuote = document.querySelector("#show-quote");
+console.log(showQuote);
+// showQuote.innerHTML = "hello;";
 
-( function() {
+var displayTrump = function() {
   var xhr = new XMLHttpRequest();
-  var url = "https://cors-anywhere.herokuapp.com/https://api.tronalddump.io/search/quote?query=obama";
+  console.log(xhr);
+  var url =
+    "https://cors-anywhere.herokuapp.com/https://api.tronalddump.io/random/quote";
 
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var trumpData = JSON.parse(xhr.responseText);
-      showQuote.textContent = trumpData._embedded.quotes.value[3];
-console.log(trumpData);
-      // for (var i = 0; i < trumpData.length; i++) {
-      //     var trumpQuotes = trumpData.data[i];
-      //     var trumpSpecificQuote = trumpQuotes._embedded.quotes[i];
 
-      // }
-
-      // showQuote = trumpSpecificQuote;
-      // console.log(trumpData);
-      // console.log(trumpData.data);
-      // console.log(trumpQuotes._embedded.quotes[i]);
+      showQuote.innerHTML = trumpData.value;
+      console.log("this is showquote", showQuote);
     }
   };
   xhr.open("GET", url, true);
   xhr.send();
-});
+};
+
+displayTrump();
+
+// module.exports = displayTrump;
