@@ -4,7 +4,7 @@
   "description": "Emmanuel, Jack, Colette, Georgia API week",
   "main": "index.js",
   "scripts": {
-    "test": "tape *.test.js | tap-spec",
+    "test": "tape ./js/*.test.js | tap-spec",
     "test:watch": "nodemon -q -x 'npm test'",
     "start": "browser-sync start --no-notify -sf 'index,html, style.css, app.js'"
   },
@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/fac-17/Week3-BFPJ#readme",
   "dependencies": {
-    "tape": "^4.11.0"
+    "tap-spec": "^5.0.0",
+    "tape": "^4.11.0",
+    "xmlhttprequest": "^1.8.0"
   }
 }
