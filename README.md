@@ -3,8 +3,12 @@ Emmanuel, Jack, Colette, Georgia API week
 
 # Project Week 3: APIs
 
-## Repo
+### Repo
 https://github.com/fac-17/Week3-BFPJ
+
+### Live link
+https://fac-17.github.io/Week3-BFPJ/
+
 ## APIs used:
 * Kanye West quotes - https://kanye.rest/
 * Donald Trump quotes - https://www.tronalddump.io/ 
