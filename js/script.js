@@ -1,7 +1,13 @@
 // Trump script
+//
 var showQuote = document.querySelector(".show-quote");
 var currentAnswer = "";
 var currentlyQuestion = true;
+var kanyeGiphyCall =
+  "http://api.giphy.com/v1/gifs/search?api_key=yulIkLnLqFVIDmUCNqd8nYSbprM6tvN0&q=kanye";
+
+var trumpGiphyCall =
+  "http://api.giphy.com/v1/gifs/search?api_key=yulIkLnLqFVIDmUCNqd8nYSbprM6tvN0&q=trump";
 
 var displayTrump = function() {
   var xhr = new XMLHttpRequest();
@@ -11,6 +17,10 @@ var displayTrump = function() {
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var trumpData = JSON.parse(xhr.responseText);
+      // fix quotes that start with a random full stop
+      if (trumpData.value.charAt(0) == ".") {
+        trumpData.value = trumpData.value.slice(1, trumpLowerCase.length);
+      }
       // filter obvious answers
       var trumpLowerCase = trumpData.value.toLowerCase();
       if (
@@ -18,7 +28,7 @@ var displayTrump = function() {
         trumpLowerCase.includes("cruz") ||
         trumpLowerCase.includes("rubio") ||
         trumpLowerCase.includes("bush") ||
-        trumpLowerCase.includes("syrians") ||
+        // trumpLowerCase.includes("syrians") ||
         trumpLowerCase.includes("clinton") ||
         trumpLowerCase.includes("bernie") ||
         trumpLowerCase.includes("president") ||
@@ -30,12 +40,12 @@ var displayTrump = function() {
         trumpLowerCase.includes("sanders") ||
         trumpLowerCase.includes("polls") ||
         trumpLowerCase.includes("brexit") ||
-        trumpLowerCase.includes("maga") ||
+        // trumpLowerCase.includes("maga") ||
         trumpLowerCase.includes("senator")
       ) {
         displayTrump();
       } else {
-        showQuote.innerHTML = trumpData.value;
+        showQuote.innerHTML = '"' + trumpData.value + '"';
         currentAnswer = "Trump";
       }
     }
@@ -46,7 +56,7 @@ var displayTrump = function() {
 };
 
 // Kanye script
-
+//
 var kanye = {};
 
 kanye.apiRequest = () => {
@@ -57,7 +67,7 @@ kanye.apiRequest = () => {
       var obj = JSON.parse(xhr.responseText);
       var quoteString = kanye.extractString(obj);
       var kanyeQuote = document.querySelector(".show-quote");
-      kanyeQuote.innerText = quoteString;
+      kanyeQuote.innerText = '"' + quoteString + '"';
       currentAnswer = "Kanye";
     }
   };
@@ -75,6 +85,10 @@ kanye.extractString = function(responseObject) {
   ) {
     output = output.concat(".");
   }
+  // capitalise
+  if (output.charAt(0) === output.charAt(0).toLowerCase()) {
+    output = output.charAt(0).toUpperCase() + output.slice(1, output.length);
+  }
   return output;
 };
 
@@ -82,17 +96,17 @@ kanye.extractString = function(responseObject) {
 // _________________________________________________________
 
 // Randomizing the quotes
-
 function displayQuote() {
   var number = Math.floor(Math.random() * 10);
   if (number % 2 == 0) {
     displayTrump();
-    console.log(number);
+    // console.log(number);
   } else {
     kanye.apiRequest();
-    console.log(number);
+    // console.log(number);
   }
 }
+
 displayQuote();
 
 // event listeners for showing the user if they chose the correct author for
@@ -104,21 +118,22 @@ var scoreTotal = document.querySelector(".score-total");
 var quizQuestionContainer = document.querySelector(".quiz-question");
 var quizAnswerContainer = document.querySelector(".quiz-answer");
 var nextButton = document.querySelector(".next-btn");
-var trumpImg = document.querySelector('.trump-img');
-var kanyeImg = document.querySelector('.kanye-img');
+var trumpImg = document.querySelector(".trump-img");
+var kanyeImg = document.querySelector(".kanye-img");
 
 var score = 0;
 
 trumpButton.addEventListener("click", function() {
   if (currentAnswer == "Trump") {
     score++;
-    trumpImg.style.display = 'block';
-    kanyeImg.style.display = 'none';
+    apiGifCall(trumpGiphyCall, trumpImg);
+    trumpImg.style.display = "block";
+    kanyeImg.style.display = "none";
     console.log("You're right!");
   } else {
-    trumpImg.style.display = 'none';
-    kanyeImg.style.display = 'block';
-
+    apiGifCall(kanyeGiphyCall, kanyeImg);
+    trumpImg.style.display = "none";
+    kanyeImg.style.display = "block";
     console.log("Uh oh! Wrong prat!");
   }
   scoreTotal.innerHTML = score.toString();
@@ -129,14 +144,15 @@ trumpButton.addEventListener("click", function() {
 
 kanyeButton.addEventListener("click", function() {
   if (currentAnswer == "Trump") {
-    trumpImg.style.display = 'block';
-    kanyeImg.style.display = 'none';
+    apiGifCall(trumpGiphyCall, trumpImg);
+    trumpImg.style.display = "block";
+    kanyeImg.style.display = "none";
     console.log("Uh oh! Wrong prat!");
-  
   } else {
-    trumpImg.style.display = 'none';
-    kanyeImg.style.display = 'block'
-  
+    apiGifCall(kanyeGiphyCall, kanyeImg);
+    trumpImg.style.display = "none";
+    kanyeImg.style.display = "block";
+
     score++;
     console.log("You're right!");
   }
@@ -145,6 +161,7 @@ kanyeButton.addEventListener("click", function() {
   flipContainer();
   scoreTotal.innerHTML = score.toString();
 });
+
 skipButton.addEventListener("click", function() {
   displayQuote();
 });
@@ -160,9 +177,22 @@ flipContainer = function() {
   currentlyQuestion = !currentlyQuestion;
 };
 
-
-// displayQuote();
 nextButton.addEventListener("click", function() {
-
   flipContainer();
 });
+
+//apiCall GIF
+
+let apiGifCall = function(url, element) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var obj = JSON.parse(xhr.responseText);
+      let rand25 = Math.floor(Math.random() * 25);
+      var giphyLink = obj.data[rand25].images.downsized_large.url;
+      element.src = giphyLink;
+    }
+  };
+  xhr.open("GET", url, true);
+  xhr.send();
+};
