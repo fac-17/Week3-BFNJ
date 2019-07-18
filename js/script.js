@@ -1,4 +1,5 @@
 // Trump script
+//
 var showQuote = document.querySelector(".show-quote");
 var currentAnswer = "";
 var currentlyQuestion = true;
@@ -16,6 +17,10 @@ var displayTrump = function() {
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var trumpData = JSON.parse(xhr.responseText);
+      // fix quotes that start with a random full stop
+      if (trumpData.value.charAt(0) == ".") {
+        trumpData.value = trumpData.value.slice(1, trumpLowerCase.length);
+      }
       // filter obvious answers
       var trumpLowerCase = trumpData.value.toLowerCase();
       if (
@@ -23,7 +28,7 @@ var displayTrump = function() {
         trumpLowerCase.includes("cruz") ||
         trumpLowerCase.includes("rubio") ||
         trumpLowerCase.includes("bush") ||
-        trumpLowerCase.includes("syrians") ||
+        // trumpLowerCase.includes("syrians") ||
         trumpLowerCase.includes("clinton") ||
         trumpLowerCase.includes("bernie") ||
         trumpLowerCase.includes("president") ||
@@ -35,12 +40,12 @@ var displayTrump = function() {
         trumpLowerCase.includes("sanders") ||
         trumpLowerCase.includes("polls") ||
         trumpLowerCase.includes("brexit") ||
-        trumpLowerCase.includes("maga") ||
+        // trumpLowerCase.includes("maga") ||
         trumpLowerCase.includes("senator")
       ) {
         displayTrump();
       } else {
-        showQuote.innerHTML = trumpData.value;
+        showQuote.innerHTML = '"' + trumpData.value + '"';
         currentAnswer = "Trump";
       }
     }
@@ -51,7 +56,7 @@ var displayTrump = function() {
 };
 
 // Kanye script
-
+//
 var kanye = {};
 
 kanye.apiRequest = () => {
@@ -62,7 +67,7 @@ kanye.apiRequest = () => {
       var obj = JSON.parse(xhr.responseText);
       var quoteString = kanye.extractString(obj);
       var kanyeQuote = document.querySelector(".show-quote");
-      kanyeQuote.innerText = quoteString;
+      kanyeQuote.innerText = '"' + quoteString + '"';
       currentAnswer = "Kanye";
     }
   };
@@ -87,7 +92,6 @@ kanye.extractString = function(responseObject) {
 // _________________________________________________________
 
 // Randomizing the quotes
-
 function displayQuote() {
   var number = Math.floor(Math.random() * 10);
   if (number % 2 == 0) {
@@ -153,6 +157,7 @@ kanyeButton.addEventListener("click", function() {
   flipContainer();
   scoreTotal.innerHTML = score.toString();
 });
+
 skipButton.addEventListener("click", function() {
   displayQuote();
 });
@@ -168,7 +173,6 @@ flipContainer = function() {
   currentlyQuestion = !currentlyQuestion;
 };
 
-// displayQuote();
 nextButton.addEventListener("click", function() {
   flipContainer();
 });
