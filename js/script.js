@@ -11,8 +11,33 @@ var displayTrump = function() {
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var trumpData = JSON.parse(xhr.responseText);
-      showQuote.innerHTML = trumpData.value;
-      currentAnswer = "Trump";
+      // filter obvious answers
+      var trumpLowerCase = trumpData.value.toLowerCase();
+      if (
+        trumpLowerCase.includes("hillary") ||
+        trumpLowerCase.includes("cruz") ||
+        trumpLowerCase.includes("rubio") ||
+        trumpLowerCase.includes("bush") ||
+        trumpLowerCase.includes("syrians") ||
+        trumpLowerCase.includes("clinton") ||
+        trumpLowerCase.includes("bernie") ||
+        trumpLowerCase.includes("president") ||
+        trumpLowerCase.includes("obama") ||
+        trumpLowerCase.includes("republican") ||
+        trumpLowerCase.includes("republicans") ||
+        trumpLowerCase.includes("potus") ||
+        trumpLowerCase.includes("presidential") ||
+        trumpLowerCase.includes("sanders") ||
+        trumpLowerCase.includes("polls") ||
+        trumpLowerCase.includes("brexit") ||
+        trumpLowerCase.includes("maga") ||
+        trumpLowerCase.includes("senator")
+      ) {
+        displayTrump();
+      } else {
+        showQuote.innerHTML = trumpData.value;
+        currentAnswer = "Trump";
+      }
     }
   };
 
@@ -31,7 +56,6 @@ kanye.apiRequest = () => {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var obj = JSON.parse(xhr.responseText);
       var quoteString = kanye.extractString(obj);
-
       var kanyeQuote = document.querySelector(".show-quote");
       kanyeQuote.innerText = quoteString;
       currentAnswer = "Kanye";
@@ -43,6 +67,14 @@ kanye.apiRequest = () => {
 
 kanye.extractString = function(responseObject) {
   var output = responseObject.quote;
+  // add full stops
+  if (
+    output.charAt(output.length - 1) !== "." &&
+    output.charAt(output.length - 1) !== "?" &&
+    output.charAt(output.length - 1) !== "!"
+  ) {
+    output = output.concat(".");
+  }
   return output;
 };
 
@@ -90,6 +122,8 @@ trumpButton.addEventListener("click", function() {
     console.log("Uh oh! Wrong prat!");
   }
   scoreTotal.innerHTML = score.toString();
+  showQuote.innerText = "";
+  displayQuote();
   flipContainer();
 });
 
@@ -106,6 +140,8 @@ kanyeButton.addEventListener("click", function() {
     score++;
     console.log("You're right!");
   }
+  showQuote.innerText = "";
+  displayQuote();
   flipContainer();
   scoreTotal.innerHTML = score.toString();
 });
@@ -127,6 +163,6 @@ flipContainer = function() {
 
 // displayQuote();
 nextButton.addEventListener("click", function() {
-  displayQuote();
+
   flipContainer();
 });
