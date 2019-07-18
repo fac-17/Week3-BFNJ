@@ -178,6 +178,8 @@ flipContainer = function() {
 };
 
 nextButton.addEventListener("click", function() {
+  trumpImg.src= "";
+  kanyeImg.src= "";
   flipContainer();
 });
 
