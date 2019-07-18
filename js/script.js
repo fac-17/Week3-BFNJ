@@ -11,8 +11,12 @@ var displayTrump = function() {
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var trumpData = JSON.parse(xhr.responseText);
-      // filter obvious answers
       var trumpLowerCase = trumpData.value.toLowerCase();
+      // fix quotes that start with a random full stop
+      if (trumpLowerCase.charAt(0) == ".") {
+        trumpLowerCase = trumpLowerCase.slice(1, trumpLowerCase.length);
+      }
+      // filter obvious answers
       if (
         trumpLowerCase.includes("hillary") ||
         trumpLowerCase.includes("cruz") ||
@@ -82,7 +86,6 @@ kanye.extractString = function(responseObject) {
 // _________________________________________________________
 
 // Randomizing the quotes
-
 function displayQuote() {
   var number = Math.floor(Math.random() * 10);
   if (number % 2 == 0) {
