@@ -72,14 +72,17 @@ var scoreTotal = document.querySelector(".score-total");
 var quizQuestionContainer = document.querySelector(".quiz-question");
 var quizAnswerContainer = document.querySelector(".quiz-answer");
 var nextButton = document.querySelector(".next-btn");
+var trumpKanyeImg = document.querySelector('.trump-kanye-img');
 
 var score = 0;
 
 trumpButton.addEventListener("click", function() {
   if (currentAnswer == "Trump") {
     score++;
+    trumpKanyeImg.src = "https://media.vanityfair.com/photos/5bbcd5aeb2ab083a47a5c29c/16:9/w_1280%2Cc_limit/Kanye-Trump.jpg"
     console.log("You're right!");
   } else {
+    trumpKanyeImg.src = "https://media.voltron.voanews.com/Drupal/01live-166/styles/817x459_retina/s3/2019-04/6187A92D-1737-4B8D-932E-C93135FC0B7A.jpg?itok=gVCGtDdE"
     console.log("Uh oh! Wrong prat!");
   }
   scoreTotal.innerHTML = score.toString();
@@ -110,6 +113,7 @@ flipContainer = function() {
   }
   currentlyQuestion = !currentlyQuestion;
 };
+
 
 // displayQuote();
 nextButton.addEventListener("click", function() {
