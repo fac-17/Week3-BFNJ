@@ -2,6 +2,11 @@
 var showQuote = document.querySelector(".show-quote");
 var currentAnswer = "";
 var currentlyQuestion = true;
+var kanyeGiphyCall =
+  "http://api.giphy.com/v1/gifs/search?api_key=yulIkLnLqFVIDmUCNqd8nYSbprM6tvN0&q=kanye";
+
+var trumpGiphyCall =
+  "http://api.giphy.com/v1/gifs/search?api_key=yulIkLnLqFVIDmUCNqd8nYSbprM6tvN0&q=trump";
 
 var displayTrump = function() {
   var xhr = new XMLHttpRequest();
@@ -104,20 +109,22 @@ var scoreTotal = document.querySelector(".score-total");
 var quizQuestionContainer = document.querySelector(".quiz-question");
 var quizAnswerContainer = document.querySelector(".quiz-answer");
 var nextButton = document.querySelector(".next-btn");
-var trumpImg = document.querySelector('.trump-img');
-var kanyeImg = document.querySelector('.kanye-img');
+var trumpImg = document.querySelector(".trump-img");
+var kanyeImg = document.querySelector(".kanye-img");
 
 var score = 0;
 
 trumpButton.addEventListener("click", function() {
   if (currentAnswer == "Trump") {
     score++;
-    trumpImg.style.display = 'block';
-    kanyeImg.style.display = 'none';
+    apiGifCall(trumpGiphyCall, trumpImg);
+    trumpImg.style.display = "block";
+    kanyeImg.style.display = "none";
     console.log("You're right!");
   } else {
-    trumpImg.style.display = 'none';
-    kanyeImg.style.display = 'block';
+    apiGifCall(kanyeGiphyCall, kanyeImg);
+    trumpImg.style.display = "none";
+    kanyeImg.style.display = "block";
 
     console.log("Uh oh! Wrong prat!");
   }
@@ -129,14 +136,15 @@ trumpButton.addEventListener("click", function() {
 
 kanyeButton.addEventListener("click", function() {
   if (currentAnswer == "Trump") {
-    trumpImg.style.display = 'block';
-    kanyeImg.style.display = 'none';
+    apiGifCall(trumpGiphyCall, trumpImg);
+    trumpImg.style.display = "block";
+    kanyeImg.style.display = "none";
     console.log("Uh oh! Wrong prat!");
-  
   } else {
-    trumpImg.style.display = 'none';
-    kanyeImg.style.display = 'block'
-  
+    apiGifCall(kanyeGiphyCall, kanyeImg);
+    trumpImg.style.display = "none";
+    kanyeImg.style.display = "block";
+
     score++;
     console.log("You're right!");
   }
@@ -160,9 +168,23 @@ flipContainer = function() {
   currentlyQuestion = !currentlyQuestion;
 };
 
-
 // displayQuote();
 nextButton.addEventListener("click", function() {
-
   flipContainer();
 });
+
+//apiCall GIF
+
+let apiGifCall = function(url, element) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var obj = JSON.parse(xhr.responseText);
+      let rand25 = Math.floor(Math.random() * 25);
+      var giphyLink = obj.data[rand25].images.downsized_large.url;
+      element.src = giphyLink;
+    }
+  };
+  xhr.open("GET", url, true);
+  xhr.send();
+};
