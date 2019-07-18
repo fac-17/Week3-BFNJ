@@ -1,9 +1,39 @@
-.show-quote {
-  color: black;
-  border-color: black;
-  border-style: solid;
-  padding: auto;
-  margin: auto;
+body {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template-columns: repeat (8, 1fr);
+  grid-template-rows: repeat (8, 1fr);
+}
+
+header {
+  background-color: blue;
+  grid-column: 1/9;
+  grid-row: 1/2;
+}
+
+.quiz-container {
+  border: 2px solid red;
+  grid-column: 2/8;
+  grid-row: 2/7;
+}
+
+.quiz-question {
+  background-color: aqua;
+  height: 100%;
   width: 100%;
-  height: 30px;
+}
+.quiz-answer {
+  background-color: orange;
+  height: 100%;
+  width: 100%;
+}
+
+.show-quote {
+  background-color: green;
+}
+.score-container {
+  background-color: yellow;
+  grid-column: 4/6;
+  grid-row: 7/8;
 }
