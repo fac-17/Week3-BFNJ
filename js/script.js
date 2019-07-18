@@ -80,6 +80,10 @@ kanye.extractString = function(responseObject) {
   ) {
     output = output.concat(".");
   }
+  // capitalise
+  if (output.charAt(0) === output.charAt(0).toLowerCase()) {
+    output = output.charAt(0).toUpperCase() + output.slice(1, output.length);
+  }
   return output;
 };
 
@@ -91,12 +95,13 @@ function displayQuote() {
   var number = Math.floor(Math.random() * 10);
   if (number % 2 == 0) {
     displayTrump();
-    console.log(number);
+    // console.log(number);
   } else {
     kanye.apiRequest();
-    console.log(number);
+    // console.log(number);
   }
 }
+
 displayQuote();
 
 // event listeners for showing the user if they chose the correct author for
@@ -108,21 +113,20 @@ var scoreTotal = document.querySelector(".score-total");
 var quizQuestionContainer = document.querySelector(".quiz-question");
 var quizAnswerContainer = document.querySelector(".quiz-answer");
 var nextButton = document.querySelector(".next-btn");
-var trumpImg = document.querySelector('.trump-img');
-var kanyeImg = document.querySelector('.kanye-img');
+var trumpImg = document.querySelector(".trump-img");
+var kanyeImg = document.querySelector(".kanye-img");
 
 var score = 0;
 
 trumpButton.addEventListener("click", function() {
   if (currentAnswer == "Trump") {
     score++;
-    trumpImg.style.display = 'block';
-    kanyeImg.style.display = 'none';
+    trumpImg.style.display = "block";
+    kanyeImg.style.display = "none";
     console.log("You're right!");
   } else {
-    trumpImg.style.display = 'none';
-    kanyeImg.style.display = 'block';
-
+    trumpImg.style.display = "none";
+    kanyeImg.style.display = "block";
     console.log("Uh oh! Wrong prat!");
   }
   scoreTotal.innerHTML = score.toString();
@@ -133,14 +137,13 @@ trumpButton.addEventListener("click", function() {
 
 kanyeButton.addEventListener("click", function() {
   if (currentAnswer == "Trump") {
-    trumpImg.style.display = 'block';
-    kanyeImg.style.display = 'none';
+    trumpImg.style.display = "block";
+    kanyeImg.style.display = "none";
     console.log("Uh oh! Wrong prat!");
-  
   } else {
-    trumpImg.style.display = 'none';
-    kanyeImg.style.display = 'block'
-  
+    trumpImg.style.display = "none";
+    kanyeImg.style.display = "block";
+
     score++;
     console.log("You're right!");
   }
@@ -166,6 +169,5 @@ flipContainer = function() {
 };
 
 nextButton.addEventListener("click", function() {
-
   flipContainer();
 });
