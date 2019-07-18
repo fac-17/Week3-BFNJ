@@ -64,21 +64,21 @@ displayQuote();
 
 // event listeners for showing the user if they chose the correct author for
 // a quote
-
+var skipButton = document.querySelector(".skip-btn");
 var trumpButton = document.querySelector(".trump-btn");
 var kanyeButton = document.querySelector(".kanye-btn");
 var scoreTotal = document.querySelector(".score-total");
 var score = 0;
 
 trumpButton.addEventListener("click", function() {
- if (currentAnswer == "Trump") {
-   score++;
-   console.log("You're right!");
- } else {
-   console.log("Uh oh! Wrong prat!");
- }
- scoreTotal.innerHTML = score.toString();
- displayQuote();
+  if (currentAnswer == "Trump") {
+    score++;
+    console.log("You're right!");
+  } else {
+    console.log("Uh oh! Wrong prat!");
+  }
+  scoreTotal.innerHTML = score.toString();
+  displayQuote();
 });
 
 kanyeButton.addEventListener("click", function() {
@@ -88,6 +88,9 @@ kanyeButton.addEventListener("click", function() {
     score++;
     console.log("You're right!");
   }
-   scoreTotal.innerHTML = score.toString();
-   displayQuote();
+  scoreTotal.innerHTML = score.toString();
+  displayQuote();
+});
+skipButton.addEventListener("click", function() {
+  displayQuote();
 });
