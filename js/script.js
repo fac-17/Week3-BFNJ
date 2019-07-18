@@ -85,6 +85,10 @@ kanye.extractString = function(responseObject) {
   ) {
     output = output.concat(".");
   }
+  // capitalise
+  if (output.charAt(0) === output.charAt(0).toLowerCase()) {
+    output = output.charAt(0).toUpperCase() + output.slice(1, output.length);
+  }
   return output;
 };
 
@@ -96,12 +100,13 @@ function displayQuote() {
   var number = Math.floor(Math.random() * 10);
   if (number % 2 == 0) {
     displayTrump();
-    console.log(number);
+    // console.log(number);
   } else {
     kanye.apiRequest();
-    console.log(number);
+    // console.log(number);
   }
 }
+
 displayQuote();
 
 // event listeners for showing the user if they chose the correct author for
@@ -129,7 +134,6 @@ trumpButton.addEventListener("click", function() {
     apiGifCall(kanyeGiphyCall, kanyeImg);
     trumpImg.style.display = "none";
     kanyeImg.style.display = "block";
-
     console.log("Uh oh! Wrong prat!");
   }
   scoreTotal.innerHTML = score.toString();
