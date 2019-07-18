@@ -115,7 +115,8 @@ trumpButton.addEventListener("click", function() {
     console.log("Uh oh! Wrong prat!");
   }
   scoreTotal.innerHTML = score.toString();
-
+  showQuote.innerText = "";
+  displayQuote();
   flipContainer();
 });
 
@@ -126,7 +127,8 @@ kanyeButton.addEventListener("click", function() {
     score++;
     console.log("You're right!");
   }
-
+  showQuote.innerText = "";
+  displayQuote();
   flipContainer();
   scoreTotal.innerHTML = score.toString();
 });
@@ -147,6 +149,6 @@ flipContainer = function() {
 
 // displayQuote();
 nextButton.addEventListener("click", function() {
-  displayQuote();
+
   flipContainer();
 });
