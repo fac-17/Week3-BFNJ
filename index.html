@@ -8,10 +8,29 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="show-quote"></div>
-    <button class="trump-btn">Trump</button>
-    <button class="kanye-btn">Kanye</button>
-    <div class="score-total">0</div>
+
+    <header>
+      Trump or Kanye?
+    </header>
+    <main class="quiz-container">
+      <section class="quiz-question">
+        <article class="show-quote"></article>
+        <section class="quiz-responses">
+          <article class="trump-container answer-container">
+            <img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/07/17/08/donald-trump.jpg" width="100px" alt="">
+            <button class="trump-btn">Trump</button>
+          </article>
+          <button class="skip-btn">Skip</button>
+          <article class="kanye-container answer-container">
+              <img src="https://media.vanityfair.com/photos/5bbcd5aeb2ab083a47a5c29c/16:9/w_1280%2Cc_limit/Kanye-Trump.jpg" width="100px" alt="">
+              <button class="kanye-btn">Kanye</button>
+          </article>
+        </section>
+      </section>
+      <!-- <section class="quiz-answer">Trump gif</section> -->
+    </main>
+    <section class="score-container">  <div class="score-total">0</div></section>
+
   </body>
   <!--
     <script type="text/javascript" src="js/kanye.js" rel="preload"></script>
