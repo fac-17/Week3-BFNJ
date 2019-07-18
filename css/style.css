@@ -78,6 +78,7 @@ button:active {
   background-color: orange;
   height: 100%;
   width: 100%;
+  display: none;
 }
 
 .show-quote {
@@ -98,7 +99,7 @@ button:active {
 }
 
 .answer-container {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
