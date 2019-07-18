@@ -29,11 +29,12 @@ header {
   background-color: orange;
   height: 100%;
   width: 100%;
+  display: none;
 }
 
 .show-quote {
   background-color: green;
-  height:30%;
+  height: 30%;
 }
 
 .quiz-responses {
@@ -44,10 +45,9 @@ header {
 }
 
 .answer-container {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .score-container {
