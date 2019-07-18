@@ -104,14 +104,21 @@ var scoreTotal = document.querySelector(".score-total");
 var quizQuestionContainer = document.querySelector(".quiz-question");
 var quizAnswerContainer = document.querySelector(".quiz-answer");
 var nextButton = document.querySelector(".next-btn");
+var trumpImg = document.querySelector('.trump-img');
+var kanyeImg = document.querySelector('.kanye-img');
 
 var score = 0;
 
 trumpButton.addEventListener("click", function() {
   if (currentAnswer == "Trump") {
     score++;
+    trumpImg.style.display = 'block';
+    kanyeImg.style.display = 'none';
     console.log("You're right!");
   } else {
+    trumpImg.style.display = 'none';
+    kanyeImg.style.display = 'block';
+
     console.log("Uh oh! Wrong prat!");
   }
   scoreTotal.innerHTML = score.toString();
@@ -122,8 +129,14 @@ trumpButton.addEventListener("click", function() {
 
 kanyeButton.addEventListener("click", function() {
   if (currentAnswer == "Trump") {
+    trumpImg.style.display = 'block';
+    kanyeImg.style.display = 'none';
     console.log("Uh oh! Wrong prat!");
+  
   } else {
+    trumpImg.style.display = 'none';
+    kanyeImg.style.display = 'block'
+  
     score++;
     console.log("You're right!");
   }
@@ -146,6 +159,7 @@ flipContainer = function() {
   }
   currentlyQuestion = !currentlyQuestion;
 };
+
 
 // displayQuote();
 nextButton.addEventListener("click", function() {
