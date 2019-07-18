@@ -1,6 +1,7 @@
 // Trump script
 var showQuote = document.querySelector(".show-quote");
 var currentAnswer = "";
+var currentlyQuestion = true;
 
 var displayTrump = function() {
   var xhr = new XMLHttpRequest();
@@ -96,10 +97,14 @@ displayQuote();
 
 // event listeners for showing the user if they chose the correct author for
 // a quote
-
+var skipButton = document.querySelector(".skip-btn");
 var trumpButton = document.querySelector(".trump-btn");
 var kanyeButton = document.querySelector(".kanye-btn");
 var scoreTotal = document.querySelector(".score-total");
+var quizQuestionContainer = document.querySelector(".quiz-question");
+var quizAnswerContainer = document.querySelector(".quiz-answer");
+var nextButton = document.querySelector(".next-btn");
+
 var score = 0;
 
 trumpButton.addEventListener("click", function() {
@@ -110,7 +115,8 @@ trumpButton.addEventListener("click", function() {
     console.log("Uh oh! Wrong prat!");
   }
   scoreTotal.innerHTML = score.toString();
-  displayQuote();
+
+  flipContainer();
 });
 
 kanyeButton.addEventListener("click", function() {
@@ -120,6 +126,27 @@ kanyeButton.addEventListener("click", function() {
     score++;
     console.log("You're right!");
   }
+
+  flipContainer();
   scoreTotal.innerHTML = score.toString();
+});
+skipButton.addEventListener("click", function() {
   displayQuote();
+});
+
+flipContainer = function() {
+  if (currentlyQuestion) {
+    quizQuestionContainer.style.display = "none";
+    quizAnswerContainer.style.display = "block";
+  } else {
+    quizQuestionContainer.style.display = "block";
+    quizAnswerContainer.style.display = "none";
+  }
+  currentlyQuestion = !currentlyQuestion;
+};
+
+// displayQuote();
+nextButton.addEventListener("click", function() {
+  displayQuote();
+  flipContainer();
 });
