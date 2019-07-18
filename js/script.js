@@ -39,7 +39,7 @@ var displayTrump = function() {
       ) {
         displayTrump();
       } else {
-        showQuote.innerHTML = trumpData.value;
+        showQuote.innerHTML = '"' + trumpData.value + '"';
         currentAnswer = "Trump";
       }
     }
@@ -61,7 +61,7 @@ kanye.apiRequest = () => {
       var obj = JSON.parse(xhr.responseText);
       var quoteString = kanye.extractString(obj);
       var kanyeQuote = document.querySelector(".show-quote");
-      kanyeQuote.innerText = quoteString;
+      kanyeQuote.innerText = '"' + quoteString + '"';
       currentAnswer = "Kanye";
     }
   };
