@@ -1,4 +1,5 @@
 // Trump script
+//
 var showQuote = document.querySelector(".show-quote");
 var currentAnswer = "";
 var currentlyQuestion = true;
@@ -22,7 +23,7 @@ var displayTrump = function() {
         trumpLowerCase.includes("cruz") ||
         trumpLowerCase.includes("rubio") ||
         trumpLowerCase.includes("bush") ||
-        trumpLowerCase.includes("syrians") ||
+        // trumpLowerCase.includes("syrians") ||
         trumpLowerCase.includes("clinton") ||
         trumpLowerCase.includes("bernie") ||
         trumpLowerCase.includes("president") ||
@@ -34,7 +35,7 @@ var displayTrump = function() {
         trumpLowerCase.includes("sanders") ||
         trumpLowerCase.includes("polls") ||
         trumpLowerCase.includes("brexit") ||
-        trumpLowerCase.includes("maga") ||
+        // trumpLowerCase.includes("maga") ||
         trumpLowerCase.includes("senator")
       ) {
         displayTrump();
@@ -50,7 +51,7 @@ var displayTrump = function() {
 };
 
 // Kanye script
-
+//
 var kanye = {};
 
 kanye.apiRequest = () => {
@@ -117,9 +118,8 @@ trumpButton.addEventListener("click", function() {
   } else {
     console.log("Uh oh! Wrong prat!");
   }
-  scoreTotal.innerHTML = score.toString();
-
   flipContainer();
+  scoreTotal.innerHTML = score.toString();
 });
 
 kanyeButton.addEventListener("click", function() {
@@ -129,10 +129,10 @@ kanyeButton.addEventListener("click", function() {
     score++;
     console.log("You're right!");
   }
-
   flipContainer();
   scoreTotal.innerHTML = score.toString();
 });
+
 skipButton.addEventListener("click", function() {
   displayQuote();
 });
@@ -148,7 +148,6 @@ flipContainer = function() {
   currentlyQuestion = !currentlyQuestion;
 };
 
-// displayQuote();
 nextButton.addEventListener("click", function() {
   displayQuote();
   flipContainer();
