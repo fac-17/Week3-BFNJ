@@ -10,25 +10,31 @@
   </head>
   <body>
     <span class="header-container">
-      <header>Who said it: Trump or Kanye?</header>
+      <header tabindex="0">Who said it: Trump or Kanye?</header>
     </span>
     <main class="quiz-container">
       <section class="quiz-question">
-        <article class="show-quote"></article>
+        <article class="show-quote" tabindex="0"</tab>></article>
         <section class="quiz-responses">
           <article class="trump-container answer-container">
             <img
               src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/07/17/08/donald-trump.jpg"
-              width="100px"
+              tabindex="0" width="100px"
               alt=""
             />
             <button class="trump-btn">Trump</button>
           </article>
+          <section class="score-skip-container">
+            <div class="score-title" tabindex="0">Score:</div>
+              <div class="score-container">
+            <div class="score-total" tabindex="0">0</div>
+            </div>
           <button class="skip-btn">Skip</button>
+          </section>
           <article class="kanye-container answer-container">
             <img 
               src="https://media.vanityfair.com/photos/5bbcd5aeb2ab083a47a5c29c/16:9/w_1280%2Cc_limit/Kanye-Trump.jpg"
-              width="100px"
+              tabindex="0" width="100px"
               alt=""
             />
             <button class="kanye-btn">Kanye</button>
@@ -45,8 +51,6 @@
         <button class="next-btn">Next</button>
       </section>
     </main>
-
-    <section class="score-container"><div class="score-total">0</div></section>
   </body>
   <!--
     <script type="text/javascript" src="js/kanye.js" rel="preload"></script>
