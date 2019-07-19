@@ -9,11 +9,11 @@ https://github.com/fac-17/Week3-BFNJ
 ### Live link
 https://fac-17.github.io/Week3-BFNJ/
 
-## APIs used:
+## APIs used
 * Kanye West quotes - https://kanye.rest/
 * Donald Trump quotes - https://www.tronalddump.io/ 
 
-## Task:
+## Task
 
 Your project this week is to build a simple web app (ideally just a single page). You must query at least two APIs and use the results to update the DOM.
 
@@ -45,7 +45,7 @@ Considerations before starting:
 - [ ] Accessibility: same as always, we'll be running your code through accessibility checkers
 - [ ] Take appropriate measures when it comes to concealing private information (i.e. your API key!)
 
-## Goals:
+## Goals
 
 - [ ] Request information from the Kanye API
 - [ ] Show Kanye quotes on a web page
@@ -53,7 +53,7 @@ Considerations before starting:
 - [ ] Show Trump quotes on a webpage
 - [ ] Generate either Kanye or Trump quotes randomly onto a web page
 
-## Stretch goals:
+## Stretch goals
 
 - [ ] Tell you if you got it right
 - [ ] Score count
