@@ -121,6 +121,7 @@ var quizAnswerContainer = document.querySelector(".quiz-answer");
 var nextButton = document.querySelector(".next-btn");
 var trumpImg = document.querySelector(".trump-img");
 var kanyeImg = document.querySelector(".kanye-img");
+var answerResult = document.querySelector("#answer-result");
 
 var score = 0;
 var attempts = 0;
@@ -131,12 +132,12 @@ trumpButton.addEventListener("click", function() {
     apiGifCall(trumpGiphyCall, trumpImg);
     trumpImg.style.display = "block";
     kanyeImg.style.display = "none";
-    console.log("You're right!");
+    answerResult.innerText = "You're right!";
   } else {
     apiGifCall(kanyeGiphyCall, kanyeImg);
     trumpImg.style.display = "none";
     kanyeImg.style.display = "block";
-    console.log("Uh oh! Wrong prat!");
+    answerResult.innerText = "Uh oh! Wrong prat!";
   }
   attempts++;
   scoreTotal.innerHTML = score.toString() + "/" + attempts.toString();
@@ -150,14 +151,13 @@ kanyeButton.addEventListener("click", function() {
     apiGifCall(trumpGiphyCall, trumpImg);
     trumpImg.style.display = "block";
     kanyeImg.style.display = "none";
-    console.log("Uh oh! Wrong prat!");
+    answerResult.innerText = "Uh oh! Wrong prat!";
   } else {
     apiGifCall(kanyeGiphyCall, kanyeImg);
     trumpImg.style.display = "none";
     kanyeImg.style.display = "block";
-
     score++;
-    console.log("You're right!");
+    answerResult.innerText = "You're right!";
   }
   attempts++;
   showQuote.innerText = "";
