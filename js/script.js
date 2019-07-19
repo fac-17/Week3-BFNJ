@@ -4,10 +4,10 @@ var showQuote = document.querySelector(".show-quote");
 var currentAnswer = "";
 var currentlyQuestion = true;
 var kanyeGiphyCall =
-  "http://api.giphy.com/v1/gifs/search?api_key=yulIkLnLqFVIDmUCNqd8nYSbprM6tvN0&q=kanye";
+  "https://api.giphy.com/v1/gifs/search?api_key=yulIkLnLqFVIDmUCNqd8nYSbprM6tvN0&q=kanye";
 
 var trumpGiphyCall =
-  "http://api.giphy.com/v1/gifs/search?api_key=yulIkLnLqFVIDmUCNqd8nYSbprM6tvN0&q=trump";
+  "https://api.giphy.com/v1/gifs/search?api_key=yulIkLnLqFVIDmUCNqd8nYSbprM6tvN0&q=trump";
 
 var displayTrump = function() {
   var xhr = new XMLHttpRequest();
@@ -17,12 +17,12 @@ var displayTrump = function() {
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var trumpData = JSON.parse(xhr.responseText);
+      var trumpLowerCase = trumpData.value.toLowerCase();
       // fix quotes that start with a random full stop
       if (trumpData.value.charAt(0) == ".") {
         trumpData.value = trumpData.value.slice(1, trumpLowerCase.length);
       }
       // filter obvious answers
-      var trumpLowerCase = trumpData.value.toLowerCase();
       if (
         trumpLowerCase.includes("hillary") ||
         trumpLowerCase.includes("cruz") ||
@@ -115,13 +115,16 @@ var skipButton = document.querySelector(".skip-btn");
 var trumpButton = document.querySelector(".trump-btn");
 var kanyeButton = document.querySelector(".kanye-btn");
 var scoreTotal = document.querySelector(".score-total");
+var attemptTotal = document.querySelector(".attempt-total");
 var quizQuestionContainer = document.querySelector(".quiz-question");
 var quizAnswerContainer = document.querySelector(".quiz-answer");
 var nextButton = document.querySelector(".next-btn");
 var trumpImg = document.querySelector(".trump-img");
 var kanyeImg = document.querySelector(".kanye-img");
+var answerResult = document.querySelector("#answer-result");
 
 var score = 0;
+var attempts = 0;
 
 trumpButton.addEventListener("click", function() {
   if (currentAnswer == "Trump") {
@@ -129,14 +132,15 @@ trumpButton.addEventListener("click", function() {
     apiGifCall(trumpGiphyCall, trumpImg);
     trumpImg.style.display = "block";
     kanyeImg.style.display = "none";
-    console.log("You're right!");
+    answerResult.innerText = "You're right!";
   } else {
     apiGifCall(kanyeGiphyCall, kanyeImg);
     trumpImg.style.display = "none";
     kanyeImg.style.display = "block";
-    console.log("Uh oh! Wrong prat!");
+    answerResult.innerText = "Uh oh! Wrong prat!";
   }
-  scoreTotal.innerHTML = score.toString();
+  attempts++;
+  scoreTotal.innerHTML = score.toString() + "/" + attempts.toString();
   showQuote.innerText = "";
   displayQuote();
   flipContainer();
@@ -147,19 +151,19 @@ kanyeButton.addEventListener("click", function() {
     apiGifCall(trumpGiphyCall, trumpImg);
     trumpImg.style.display = "block";
     kanyeImg.style.display = "none";
-    console.log("Uh oh! Wrong prat!");
+    answerResult.innerText = "Uh oh! Wrong prat!";
   } else {
     apiGifCall(kanyeGiphyCall, kanyeImg);
     trumpImg.style.display = "none";
     kanyeImg.style.display = "block";
-
     score++;
-    console.log("You're right!");
+    answerResult.innerText = "You're right!";
   }
+  attempts++;
   showQuote.innerText = "";
   displayQuote();
   flipContainer();
-  scoreTotal.innerHTML = score.toString();
+  scoreTotal.innerHTML = score.toString() + "/" + attempts.toString();
 });
 
 skipButton.addEventListener("click", function() {
@@ -178,8 +182,8 @@ flipContainer = function() {
 };
 
 nextButton.addEventListener("click", function() {
-  trumpImg.src= "";
-  kanyeImg.src= "";
+  trumpImg.src = "";
+  kanyeImg.src = "";
   flipContainer();
 });
 
