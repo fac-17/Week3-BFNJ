@@ -115,6 +115,7 @@ var skipButton = document.querySelector(".skip-btn");
 var trumpButton = document.querySelector(".trump-btn");
 var kanyeButton = document.querySelector(".kanye-btn");
 var scoreTotal = document.querySelector(".score-total");
+var attemptTotal = document.querySelector(".attempt-total");
 var quizQuestionContainer = document.querySelector(".quiz-question");
 var quizAnswerContainer = document.querySelector(".quiz-answer");
 var nextButton = document.querySelector(".next-btn");
@@ -122,6 +123,7 @@ var trumpImg = document.querySelector(".trump-img");
 var kanyeImg = document.querySelector(".kanye-img");
 
 var score = 0;
+var attempts = 0;
 
 trumpButton.addEventListener("click", function() {
   if (currentAnswer == "Trump") {
@@ -136,7 +138,8 @@ trumpButton.addEventListener("click", function() {
     kanyeImg.style.display = "block";
     console.log("Uh oh! Wrong prat!");
   }
-  scoreTotal.innerHTML = score.toString();
+  attempts++;
+  scoreTotal.innerHTML = score.toString() + '/' + attempts.toString();
   showQuote.innerText = "";
   displayQuote();
   flipContainer();
@@ -156,10 +159,11 @@ kanyeButton.addEventListener("click", function() {
     score++;
     console.log("You're right!");
   }
+  attempts++;
   showQuote.innerText = "";
   displayQuote();
   flipContainer();
-  scoreTotal.innerHTML = score.toString();
+  scoreTotal.innerHTML = score.toString() + '/' + attempts.toString();
 });
 
 skipButton.addEventListener("click", function() {
