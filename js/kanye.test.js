@@ -11,7 +11,6 @@ test("check sum works", function(t) {
 });
 
 test("check that function returns a string", function(t) {
-  // var output = kanye();
   const actual = typeof kanye.apiRequest();
   const expected = "string";
   t.deepEqual(actual, expected, "should return a string");
