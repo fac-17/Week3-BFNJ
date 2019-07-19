@@ -112,10 +112,28 @@ button:active {
 }
 
 .quiz-responses {
-  display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 2rem;
+}
+
+.response-container {
+  width: 80%;
+  border: solid black 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem auto auto;
+}
+
+.score-skip-container {
+ border: solid black 2px;
+ justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 8rem;
+  margin: auto;
 }
 
 .answer-container {
@@ -126,6 +144,10 @@ button:active {
 
 img {
   margin-bottom: 2rem;
+}
+
+.kanye-image {
+  margin-top: 1rem;
 }
 
 .score-title {
@@ -169,16 +191,66 @@ img {
   .score-container {
     font-size: 3rem;
   }
+
+  .show-quote {
+    height: 7rem;
+    padding: 2rem;
+  }
 }
 
 @media only screen and (max-width: 775px) {
   .show-quote {
     width: 28rem;
   }
+
+  .quiz-responses {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+
+  img {
+    display: none;
+  }
+
+  .score-container {
+    margin-bottom: 1rem;
+  }
+
+  .score-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .response-container {
+    margin: 1rem auto;
+  }
 }
 
 @media only screen and (max-width: 600px) {
   .show-quote {
     width: 20rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .show-quote {
+    width: 15rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .show-quote {
+    width: 11rem;
+  }
+}
+
+@media (min-width: 851px) and (max-width: 1440px) {
+  .show-quote {
+    padding: 2rem;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  button {
+    padding: 1rem 1rem;
   }
 }
