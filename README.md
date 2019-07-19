@@ -1,5 +1,12 @@
 # Project Week 3: APIs
-Emmanuel, Jack, Colette, Georgia
+
+Taking into account Jack's suggestion* of a coding-related group name, we present to you...
+The Callback Ballsacks: Emmanuel, Jack, Colette and Georgia!
+
+![The Callback Ballsacks](https://images-na.ssl-images-amazon.com/images/I/A12augTbg0L._SY550_.jpg)
+
+\*Since Jack suggested a coding-related group name, he gets full credit/blame.
+
 
 ### Repo
 https://github.com/fac-17/Week3-BFNJ
