@@ -66,13 +66,8 @@ button:hover {
   color: #2d2d99;
   border: 4px solid #2d2d99;
 }
-/*
-button:active {
-  background-color: red;
-} */
 
 .quiz-container {
-  /* border: 2px solid red; */
   grid-column: 2/8;
   grid-row: 2/9;
 }
@@ -85,7 +80,6 @@ button:active {
 }
 
 .quiz-answer {
-  /* background-color: orange; */
   height: 100%;
   width: 100%;
   display: none;
