@@ -175,4 +175,8 @@ img {
   .show-quote {
     width: 20rem;
   }
+
+  .score-skip-container {
+    order: 1;
+  }
 }
