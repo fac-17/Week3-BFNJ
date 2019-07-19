@@ -35,31 +35,31 @@ Considerations before starting:
 
 ## Requirements
 
-- [ ] Your app queries at least two APIs using the XMLHttpRequest method.
+- [x] Your app queries at least two APIs using the XMLHttpRequest method.
 - [ ] Your app features some dynamic content.
 - [ ] A clearly defined user journey, documented in your readme.
 - [ ] A well-considered architecture for your app - think back to the workshops from the beginning of this week. 
 - [ ] Try to modularise your code, or break it down into separate files. Document any key decisions about how you structure your code in your readme!
 - [ ] Code: break your JavaScript down into small functions with a clear input and output; this will make it easy to write tests.
 - [ ] Tests: write tests for your pure functions. We don't expect tests on the DOM or on the response from an API.
-- [ ] Design: aim for a responsive, mobile-first design.
-- [ ] Accessibility: same as always, we'll be running your code through accessibility checkers.
+- [x] Design: aim for a responsive, mobile-first design.
+- [x] Accessibility: same as always, we'll be running your code through accessibility checkers.
 - [ ] Take appropriate measures when it comes to concealing private information (i.e. your API key!)
 
 
 ## Goals
 
-- [ ] Request information from the Kanye API.
-- [ ] Show Kanye quotes on a web page.
-- [ ] Request information from the Trump API.
-- [ ] Show Trump quotes on a webpage.
-- [ ] Generate either Kanye or Trump quotes randomly onto a web page.
+- [x] Request information from the Kanye API.
+- [x] Show Kanye quotes on a web page.
+- [x] Request information from the Trump API.
+- [x] Show Trump quotes on a webpage.
+- [x] Generate either Kanye or Trump quotes randomly onto a web page.
 
 
 ## Stretch goals
 
-- [ ] A message to tell you if you got it right.
-- [ ] Score count.
-- [ ] Prettified.
-- [ ] Random gif of Trump/Kanye if you get it right (pulled from Giphy).
+- [x] A message to tell you if you got it right.
+- [x] Score count.
+- [x] Prettified.
+- [x] Random gif of Trump/Kanye if you get it right (pulled from Giphy).
 - [ ] Hide the API key using config.env.
