@@ -97,6 +97,7 @@ kanye.extractString = function(responseObject) {
 
 // Randomizing the quotes
 function displayQuote() {
+  showQuote.innerText = "...Finding your next #TrumpYe quote!";
   var number = Math.floor(Math.random() * 10);
   if (number % 2 == 0) {
     displayTrump();
@@ -141,7 +142,6 @@ trumpButton.addEventListener("click", function() {
   }
   attempts++;
   scoreTotal.innerHTML = score.toString() + "/" + attempts.toString();
-  showQuote.innerText = "...Finding your next #TrumpYe quote!";
   displayQuote();
   flipContainer();
 });
@@ -160,7 +160,6 @@ kanyeButton.addEventListener("click", function() {
     answerResult.innerText = "Correct! Yeezy as 1,2,3!";
   }
   attempts++;
-  showQuote.innerText = "...Finding your next #TrumpYe quote!";
   displayQuote();
   flipContainer();
   scoreTotal.innerHTML = score.toString() + "/" + attempts.toString();
