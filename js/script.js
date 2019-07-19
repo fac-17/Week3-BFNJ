@@ -17,12 +17,12 @@ var displayTrump = function() {
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var trumpData = JSON.parse(xhr.responseText);
+      var trumpLowerCase = trumpData.value.toLowerCase();
       // fix quotes that start with a random full stop
       if (trumpData.value.charAt(0) == ".") {
         trumpData.value = trumpData.value.slice(1, trumpLowerCase.length);
       }
       // filter obvious answers
-      var trumpLowerCase = trumpData.value.toLowerCase();
       if (
         trumpLowerCase.includes("hillary") ||
         trumpLowerCase.includes("cruz") ||
